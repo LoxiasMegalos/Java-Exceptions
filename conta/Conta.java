@@ -29,6 +29,10 @@ public class Conta {
 		}
 	}
 	
+	public Cliente[] getClientes(){
+		return this.clientes;
+	}
+
 	public void sacar(float quantia) {
 		
 		if(quantia <= saldo){
@@ -42,6 +46,10 @@ public class Conta {
 		this.saldo += quantia;
 	}
 
+	public float getSaldo(){
+		return this.saldo;
+	}
+
 	public String toString() {
 		String informacoes = "Numero: " + this.numero + "\n";
 		informacoes += "Saldo: " + this.saldo + "\n";
@@ -53,7 +61,7 @@ public class Conta {
 				informacoes += "Nome do cliente: " + cliente.getNome() + "\n";
 				informacoes += "CPF do cliente: " + cliente.getCpf() + "\n";
 			}catch (NullPointerException e){
-				System.out.println("Cliente Inexistente \n");
+				informacoes += "Cliente Inexistente \n";
 			}
 
 		}
