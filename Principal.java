@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import conta.Cliente;
 import conta.Conta;
+import conta.SaldoInsuficienteException;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class Principal {
             System.out.println("Remover Conta (3)");
             System.out.println("Listando Contas Cadastradas (4)");
             System.out.println("Adicionando Clientes a contas (5)");
+            System.out.println("Sacar Dinheiro da Conta (6)");
             System.out.println("Sair (0)");
             System.out.println("*******************************");
 
@@ -87,16 +89,16 @@ public class Principal {
                     Cliente cliente;
                     
                     String nome;
-                    long Cpf;
+                    long cpf;
                     int numero;
 
                     System.out.println("Informe o nome: ");
                     nome = teclado.nextLine();
 
                     System.out.println("Informe o cpf: ");
-                    Cpf = Long.parseLong(teclado.nextLine());
+                    cpf = Long.parseLong(teclado.nextLine());
 
-                    cliente = new Cliente(nome, Cpf);
+                    cliente = new Cliente(nome, cpf);
                     
                     System.out.println("Informe o numero da conta que deseja adicionar: ");
                     numero = Integer.parseInt(teclado.nextLine());
@@ -110,6 +112,30 @@ public class Principal {
 
                     break;
                 }
+                case 6:{
+                    System.out.println("Saque: ");
+                    float quantia;
+                    int numero;
+
+                    System.out.println("Informe o numero da conta para sacar: ");
+                    numero = Integer.parseInt(teclado.nextLine());
+
+                    System.out.println("Informe a quantia: ");
+                    quantia = Float.parseFloat(teclado.nextLine());
+
+                    for(int i = 0; i < contas.size(); i++){
+                        if(contas.get(i).getNumero() == numero){
+                            try{
+                                contas.get(i).sacar(quantia);
+                            } catch(SaldoInsuficienteException e){
+                                System.out.println(e.getMessage());
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+
                 case 0:{
                     System.out.println("Obrigado por utilizar!");
                     break;

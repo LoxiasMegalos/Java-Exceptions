@@ -4,9 +4,9 @@ import conta.Cliente;
 
 public class Conta {
 
-	private float saldo;
-	private float limite;
-	private int numero;
+	protected float saldo;
+	protected float limite;
+	protected int numero;
 	private Cliente[] clientes;
 
 	public Conta(float saldo, float limite, int numero) {
@@ -30,7 +30,12 @@ public class Conta {
 	}
 	
 	public void sacar(float quantia) {
-		this.saldo -= quantia;
+		
+		if(quantia <= saldo){
+			this.saldo -= quantia;
+		} else{
+			throw new SaldoInsuficienteException("Saldo Insuficiente da Conta numero: "+ this.numero);
+		}
 	}
 	
 	public void depositar (float quantia) {
