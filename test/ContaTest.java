@@ -156,4 +156,18 @@ public class ContaTest{
         assertEquals(300, e.getSaldo(), 0);
     }
 
+    @Test
+    public void testaToStringConta(){
+        assertEquals("Numero: 1\nSaldo: 100.0\nLimite: 1000.0\nNome do cliente: Murillo\nCPF do cliente: 1234\nCliente Inexistente\nCliente Inexistente\nCliente Inexistente\n", c.toString());
+    }
+
+    @Test
+    public void testaToStringContaCorrente(){
+        assertEquals("Numero: 2\nSaldo: 200.0\nLimite: 1000.0\nNome do cliente: Murillo\nCPF do cliente: 1234\nCliente Inexistente\nCliente Inexistente\nCliente Inexistente\n", cc.toString());
+    }
+
+    @Test
+    public void testaToStringContaEspecial(){
+        assertEquals("Numero: 3\nSaldo: 250.0\nLimite: 1000.0\nNome do cliente: Murillo\nCPF do cliente: 1234\nCliente Inexistente\nCliente Inexistente\nCliente Inexistente\n", e.toString());
+    }
 }

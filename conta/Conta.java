@@ -61,7 +61,7 @@ public class Conta {
 				informacoes += "Nome do cliente: " + cliente.getNome() + "\n";
 				informacoes += "CPF do cliente: " + cliente.getCpf() + "\n";
 			}catch (NullPointerException e){
-				informacoes += "Cliente Inexistente \n";
+				informacoes += "Cliente Inexistente\n";
 			}
 
 		}
